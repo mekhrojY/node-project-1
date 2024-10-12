@@ -1,0 +1,16 @@
+{
+  "name": "jsbeck",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
