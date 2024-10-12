@@ -1,9 +1,10 @@
 {
   "name": "jsbeck",
+  "type": "module",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "npm start"
+    "start": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
