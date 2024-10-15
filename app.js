@@ -44,20 +44,24 @@ server.post("/todo/add", (req, res) => {
 });
 
 server.put("/todo/edit", (req, res) => {
-  // request body ichidan title, desc va idni o'qib olamiz. 
+  // request body ichidan title, desc va idni o'qib olamiz.
   const { title, desc, id } = req.body;
-// todoList arrayidan find metodi orqali berilgan idi bn bir xil bo'lgan obyektni topamiz.
-// topilgan obyekti dataga beramiz.
-  const data = todoList.find((val) => {
-    console.log(val, id);
-    console.log(val.id === id);
+  // todoList arrayidan find metodi orqali berilgan ID bn bir xil bo'lgan obyektni topamiz.
+  // topilgan obyekti dataga yuklaymiz.
 
+  const updatedObject = todoList.find((val) => {
     if (val.id === id) {
       return val;
     }
   });
+
+  console.log("before; ", updatedObject);
+  updatedObject.title = title;
+  updatedObject.desc = desc;
+  console.log("after; ", updatedObject);
+
   // bu javob qaytarish joyi!
-  res.status(200).json({ success: true, todo: todoList });
+  res.status(200).json({ success: true, todo: updatedObject });
 });
 
 server.listen(8080, () => {
