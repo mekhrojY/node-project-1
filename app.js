@@ -49,19 +49,19 @@ server.put("/todo/edit", (req, res) => {
   // todoList arrayidan find metodi orqali berilgan ID bn bir xil bo'lgan obyektni topamiz.
   // topilgan obyekti dataga yuklaymiz.
 
-  const updatedObject = todoList.find((val) => {
-    if (val.id === id) {
-      return val;
-    }
-  });
+  const updatedObject = todoList.find((val) => val.id === id);
+  // Agar biz qidirayotgan object topilmasa 404 hatolik qaytaramiz. s
+  if (updatedObject === undefined) {
+    res.status(404).json({ success: false, error: "Object not found" });
+  } else {
+    console.log("before; ", updatedObject);
+    updatedObject.title = title;
+    updatedObject.desc = desc;
+    console.log("after; ", updatedObject);
 
-  console.log("before; ", updatedObject);
-  updatedObject.title = title;
-  updatedObject.desc = desc;
-  console.log("after; ", updatedObject);
-
-  // bu javob qaytarish joyi!
-  res.status(200).json({ success: true, todo: updatedObject });
+    // bu javob qaytarish joyi!
+    res.status(200).json({ success: true, todo: updatedObject });
+  }
 });
 
 server.listen(8080, () => {
